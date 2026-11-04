@@ -1,0 +1,177 @@
+:root {
+    --neon-purple: #a020f0;
+    --dark-purple: #2a0052;
+    --bg-black: #080808;
+    --text-white: #ffffff;
+    --glow-purple: 0 0 20px rgba(160, 32, 240, 0.6);
+    
+    /* Colores Oficiales de Apps */
+    --color-twitch: #9146FF;
+    --color-discord: #5865F2;
+    --color-instagram: #E4405F;
+    --color-youtube: #FF0000;
+    --color-tiktok: #000000;
+    --color-x: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* --- FONDOS ESTILO STREAMER --- */
+.bg-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    background: radial-gradient(circle at 50% 50%, var(--dark-purple) 0%, var(--bg-black) 80%);
+}
+
+.grid-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-image: linear-gradient(rgba(160, 32, 240, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(160, 32, 240, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    animation: fadeIn 1s ease-out;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.profile-logo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid var(--neon-purple);
+    box-shadow: var(--glow-purple);
+    animation: float 4s ease-in-out infinite;
+    object-fit: cover;
+}
+
+.username {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    text-shadow: var(--glow-purple);
+}
+
+/* --- BOTONES PRINCIPALES (Twich/Discord) --- */
+.main-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-main {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s transform, 0.3s box-shadow;
+    text-transform: uppercase;
+}
+
+.twitch {
+    background-color: var(--color-twitch);
+    box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
+}
+
+.discord {
+    background-color: var(--color-discord);
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+}
+
+.btn-main:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+/* --- REDES SOCIALES INFERIORES --- */
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.social-item {
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(160, 32, 240, 0.2);
+    transition: 0.3s;
+}
+
+.social-item i {
+    font-size: 1.2rem;
+}
+
+/* Colores al hacer hover en redes sociales */
+.instagram:hover { background: var(--color-instagram); box-shadow: 0 0 15px var(--color-instagram); }
+.youtube:hover { background: var(--color-youtube); box-shadow: 0 0 15px var(--color-youtube); }
+.tiktok:hover { background: var(--color-tiktok); box-shadow: 0 0 15px #fff; }
+.x-twitter:hover { background: var(--color-x); box-shadow: 0 0 15px #fff; }
+
+.social-item:hover {
+    transform: translateY(-5px);
+    border-color: transparent;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Mobile */
+@media (max-width: 400px) {
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+    .username {
+        font-size: 2rem;
+    }
+  }
